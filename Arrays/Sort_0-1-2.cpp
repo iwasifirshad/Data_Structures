@@ -2,39 +2,66 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-class Solution{
+
+
+
+ // } Driver Code Ends
+class Solution
+{
     public:
-    void convertToWave(int *arr, int n){
-        
-        int i,j,temp=0;
-        for(i=0;i<n-1;i+=2)
-        {
+    void sort012(int a[], int n)
+    {
+        int low = 0, mid = 0, high = n-1;
     
-            swap(arr[i],arr[i+1]);
-            
+    while(mid <= high)
+    {
+        switch(a[mid])
+        {
+            case 0:
+                swap(a[low], a[mid]);
+                low++;
+                mid++;
+                break;
+                
+            case 1:
+                mid++;
+                break;
+                
+            case 2:
+                swap(a[mid], a[high]);
+                high--;
+                break;
         }
-        
-    }
+    } 
+  }   
 };
 
 // { Driver Code Starts.
+int main() {
 
-int main()
-{
-    int t,n;
-    cin>>t; //Input testcases
-    while(t--) //While testcases exist
-    {
-        cin>>n; //input size of array
-        int a[n]; //declare array of size n
-        for(int i=0;i<n;i++)
-            cin>>a[i]; //input elements of array
+    int t;
+    cin >> t;
+
+    while(t--){
+        int n;
+        cin >>n;
+        int a[n];
+        for(int i=0;i<n;i++){
+            cin >> a[i];
+        }
+
         Solution ob;
-        ob.convertToWave(a, n);
+        ob.sort012(a, n);
 
-        for(int i=0;i<n;i++)
-            cout<<a[i]<<" "; //print array
-            
-        cout<<endl;
+        for(int i=0;i<n;i++){
+            cout << a[i]  << " ";
+        }
+
+        cout << endl;
+        
+        
     }
-}  // } Driver Code Ends
+    return 0;
+}
+
+  // } Driver Code Ends
